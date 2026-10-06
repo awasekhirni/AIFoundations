@@ -1,0 +1,80 @@
+"""
+// Copyright 2025 β ORI Inc.Canada All Rights Reserved.
+// Author: Awase Khirni Syed Ph.D.
+// Product Name: β ORI Inc. AI Foundations - NLP Techniques Part-I
+// Version: 1.2
+// Date: 2025-01-25
+// technical card 01: Tokenization
+// The intent of this foundational key topics to understand the nuts and bolts/ internals of language models that are being constructed.
+// this will give my students strong foundation on understanding the nitty gritties of building large language models from scratch.
+// there are in total i think 22 NLP techniques widely used in the industry that serve as foundation. I have divided these 22 into technical cards
+// each technical card would present various scenarios. these scenarios are aligned with my past consulting experience with clients (MNCs)
+// where i had helped them solve the challenges or from my past masters students/Ph.D. students
+
+"""
+
+Packages to install
+
+1. Environment Setup
+cd tc01_tokenization_scenarios
+python3 -m venv .
+#//activate environment
+source bin/activate
+
+2. Installing core packages necessary
+pip3 install nltk spacy transformers tokenizers tiktoken
+python -m spacy download en_core_web_sm
+
+
+3. Executing the code
+python3 src/scenario1_regex_reviews.py
+
+
+| # | Tool | Card field demonstrated | Domain | Key takeaway |
+|---|------|--------------------------|--------|--------------|
+| 1 | stdlib `re` | Rule-based splitting | E-commerce reviews | Pattern priority determines token quality |
+| 2 | NLTK | Rule-based (Punkt/Treebank) | Financial news | Sentence vs word level; abbreviations/decimals |
+| 3 | spaCy | Rules + punctuation + custom cases | Healthcare | Token attributes, `add_special_case`, span mapping |
+| 4 | HF Tokenizers | Subword (WordPiece/BPE) | E-commerce catalog | OOV solved; train your own BPE |
+| 5 | Tiktoken | LLM synergy (pre-processing) | Enterprise KB / RAG | Token ≠ word; budget-aware chunking & prompts |
+| 6 | stdlib `re` | Domain application (IoT/GPS) | IoT telemetry | Known grammar → typed tokens → structured records |
+| 7 \ Unigram LM  | Probabilistic Subwords for Spaceless & Multilingual Text |multiginula e-commerce support tickets (ja/zh/ko/th/en) | unsupported-language routing
+| 8 | Character level tokenization SMS Spam Filtering |Spam Filter Pipeline | Noisy user-generated content moderation (e.g.reddit data)
+| 9|
+
+
+
+Cross-Tool benchmark
+1. NLTK
+2. spaCy,
+3. HF
+4. Tiktoken
+5. SentencePiece over one corpus with unified report
+
+Tokenizer Engineering -Vocab-size
+LLM   used size
+Llama1 used 32k
+Llama2 used 32k
+Llama3 used 128k
+Mistral used 32K
+GPT-4 used approx 100k
+
+BPE vs. Unigram vs. WordPiece approaches - compute vocab budgets to identify which is the best approach forward.
+What factors influence LLM design decision
+What is the tradeoff between vocab size and sequence length?  Assignment - read about "Pareto Frontier"
+
+What are key LLM design rules?
+
+How is vocab size determined?
+embedding dimensions
+
+We need to visualize this using matplotlib.
+byte pair encoding (BPE), Unigram, WordPiece -> Tokenizer library
+
+Tokenizer Engineering : The vocabulary-Size Decision
+- vocab sizes
+- which algorithms
+
+
+BPE-bytelevel gives losslessness and alphabet coverage (256 base)
+Wordpiece with bytelevel pre-tokenizer works  it has unk_token though with bytelevel nothing is unk (unk_token="[UNK]" anyway)
